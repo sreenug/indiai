@@ -46,6 +46,45 @@ LANGUAGE_CHOICES = (
     ('Other','Other'),
 )
 
+STATE_CHOICES = (
+      ('AP' , 'Andhra Pradesh'), (
+      'AR' , 'Arunachal Pradesh'), (
+      'AS' , 'Assam'), (
+      'BR' , 'Bihar'), (
+      'CT' , 'Chhattisgarh'), (
+      'GA' , 'Goa'), (
+      'GJ' , 'Gujarat'), (
+      'HR' , 'Haryana'), (
+      'HP' , 'Himachal Pradesh'), (
+      'JK' , 'Jammu & Kashmir'), (
+      'JH' , 'Jharkhand'), (
+      'KA' , 'Karnataka'), (
+      'KL' , 'Kerala'), (
+      'MP' , 'Madhya Pradesh'), (
+      'MH' , 'Maharashtra'), (
+      'MN' , 'Manipur'), (
+      'ML' , 'Meghalaya'), (
+      'MZ' , 'Mizoram'), (
+      'NL' , 'Nagaland'), (
+      'OR' , 'Odisha'), (
+      'PB' , 'Punjab'), (
+      'RJ' , 'Rajasthan'), (
+      'SK' , 'Sikkim'), (
+      'TN' , 'Tamil Nadu'), (
+      'TG' , 'Telangana'), (
+      'TR' , 'Tripura'), (
+      'UK' , 'Uttarakhand'), (
+      'UP' , 'Uttar Pradesh'), (
+      'WB' , 'West Bengal'), (
+      'AN' , 'Andaman & Nicobar'), (
+      'CH' , 'Chandigarh'),
+      ('DN' , 'Dadra and Nagar Haveli'),
+      ('DD' , 'Daman & Diu'),
+      ('DL' , 'Delhi'),
+      ('LD' , 'Lakshadweep'),
+      ('PY' , 'Puducherry'),
+)
+
 class School(models.Model):
     name = models.CharField(max_length=100)
     lowest_class = models.CharField(max_length=10, choices=CLASS_CHOICES)
@@ -54,6 +93,11 @@ class School(models.Model):
     management_type = models.CharField(max_length=100, choices=TYPE_CHOICES)
     medium_of_instruction = models.CharField(max_length=100, choices=LANGUAGE_CHOICES)
     image = models.ImageField(upload_to='school', null=True, blank=True)
+    street_address_1 = models.CharField(max_length=500, blank=True, null=True)
+    street_address_2 = models.CharField(max_length=500, blank=True, null=True)
+    city = models.CharField(max_length=100, blank=True, null=True)
+    state = models.CharField(max_length=100, blank=True, null=True, choices=STATE_CHOICES)
+    pincode = models.IntegerField(max_length=6, null=True, blank=True)
     latitude = models.DecimalField(max_digits=31, decimal_places=28, null=True, blank=True,
                                    validators=[MaxValueValidator(90), MinValueValidator(-90)])
     longitude = models.DecimalField(max_digits=32, decimal_places=28, null=True, blank=True,

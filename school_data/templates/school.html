@@ -54,7 +54,11 @@
 			{% load app_tags %}
 			{% for f in form %}
 			<div class="form-group">
-				<label for="{{f.label}}" class="col-sm-2 control-label">{{f.label}}</label>
+				{% if f.label == 'Image' %}
+					<label for="{{f.label}}" class="col-sm-2 control-label">School Photo</label>
+				{% else %}
+					<label for="{{f.label}}" class="col-sm-2 control-label">{{f.label}}</label>
+				{% endif %}
 				<div class="col-sm-10">
 					{{ f|placeholder:f.label }}
 				</div>
@@ -103,7 +107,12 @@
 					highest_class: "required",
 					recognized: "required",
 					management_type: "required",
-					medium_of_instruction : "required",					
+					medium_of_instruction : "required",
+					street_address_1: "required",
+					street_address_2: "required",
+					city: "required",
+					state: "required",
+					pincode: "required",
 				},
 				messages: {
 					name: {
@@ -115,7 +124,12 @@
 					highest_class: "Enter Highest Class",
 					recognized: "Enter Recognized",
 					management_type: "Enter Management Type",
-					medium_of_instruction : "Enter Medium of instructions",					
+					medium_of_instruction : "Enter Medium of instructions",
+					street_address_1: "Enter Street Address Line 1",
+					street_address_2: "Enter Street Address Line 2",
+					city: "Enter Street City",
+					state: "Enter State",
+					pincode: "Enter Pincode",
 				}
 			});
 			
