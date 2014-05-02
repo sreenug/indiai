@@ -3,6 +3,7 @@ from django.db import models
 from django.forms import ModelForm
 
 CLASS_CHOICES = (
+    ('0', 'Pre-School'),            
     ('1', 'First'),
     ('2', 'Second'),
     ('3', 'Third'),
