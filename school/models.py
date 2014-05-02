@@ -86,15 +86,20 @@ STATE_CHOICES = (
 )
 
 class School(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField("School Name", max_length=100)
     lowest_class = models.CharField(max_length=10, choices=CLASS_CHOICES)
     highest_class = models.CharField(max_length=10, choices=CLASS_CHOICES)
     recognized = models.CharField(max_length=10, choices=RECOGNIZED_CHOICES)
     management_type = models.CharField(max_length=100, choices=TYPE_CHOICES)
     medium_of_instruction = models.CharField(max_length=100, choices=LANGUAGE_CHOICES)
-    image = models.ImageField(upload_to='school', null=True, blank=True)
-    street_address_1 = models.CharField(max_length=500, blank=True, null=True)
-    street_address_2 = models.CharField(max_length=500, blank=True, null=True)
+    other_language = models.CharField(max_length=20, null=True, blank=True)
+    min_fee = models.IntegerField("Minimum Monthly Fee", max_length=6, null=True, blank=True)
+    max_fee = models.IntegerField("Maximum Monthly Fee", max_length=6, null=True, blank=True)
+    establishment = models.IntegerField("Year of Establishment", max_length=4)
+    recognition = models.IntegerField("Year of Recognition", max_length=4)
+    image = models.ImageField("School Photo", upload_to='school', null=True, blank=True)
+    street_address_1 = models.CharField(max_length=100, blank=True, null=True)
+    street_address_2 = models.CharField(max_length=100, blank=True, null=True)
     city = models.CharField(max_length=100, blank=True, null=True)
     state = models.CharField(max_length=100, blank=True, null=True, choices=STATE_CHOICES)
     pincode = models.IntegerField(max_length=6, null=True, blank=True)
@@ -106,7 +111,8 @@ class School(models.Model):
 
     def __str__(self):              # __unicode__ on Python 2
         return self.name
-
+    class Meta:
+        unique_together = ('name', 'street_address_1', 'street_address_2', 'pincode')
 
 class SchoolForm(ModelForm):
     class Meta:
