@@ -57,7 +57,11 @@
 			{% csrf_token %}
 			{% load app_tags %}
 			{% for f in form %}
-			<div class="form-group">
+			 {% if f.label == "Other Language" %}
+			     <div class="form-group" id="language" style="display: none;">
+			 {% else %}
+			     <div class="form-group">
+			 {% endif %}
 				<label for="{{f.label}}" class="col-sm-2 control-label">{{f.label}}</label>
 				<div class="col-sm-10">
 					{{ f|placeholder:f.label }}
@@ -133,10 +137,22 @@
 				}
 			});
 			
+			$("#id_medium_of_instruction").change(function() {
+	            if($("#id_medium_of_instruction").val() == "Other")
+	                {
+	                   $("#language").show();	       
+	                   $('#id_other_language').attr('placeholder','Please Specify Here');
+	                }
+	            else{
+	                $("#language").hide();
+	            }
+	            }); 
+			
 			
         });
 
     </script>
+    
 	
   </body>
 </html>

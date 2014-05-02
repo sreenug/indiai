@@ -92,7 +92,7 @@ class School(models.Model):
     recognized = models.CharField(max_length=10, choices=RECOGNIZED_CHOICES)
     management_type = models.CharField(max_length=100, choices=TYPE_CHOICES)
     medium_of_instruction = models.CharField(max_length=100, choices=LANGUAGE_CHOICES)
-    other_language = models.CharField(max_length=20, null=True, blank=True)
+    other_language = models.CharField("Other Language", max_length=20, null=True, blank=True)
     min_fee = models.IntegerField("Minimum Monthly Fee", max_length=6, null=True, blank=True)
     max_fee = models.IntegerField("Maximum Monthly Fee", max_length=6, null=True, blank=True)
     establishment = models.IntegerField("Year of Establishment", max_length=4)
