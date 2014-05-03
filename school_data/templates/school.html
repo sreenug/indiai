@@ -35,7 +35,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#"><img style="width:150px;" src="http://indiai.org/wp-content/uploads/2014/04/indiai-logo-20140415.jpg"></a>
+          <a class="navbar-brand" href="http://www.indiai.org"><img style="width:150px;" src="http://indiai.org/wp-content/uploads/2014/04/indiai-logo-20140415.jpg"></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -107,6 +107,26 @@
 						minlength: 2,
 						maxlength: 200						
 					},
+					min_fee: {
+						required: true,
+						min: 0,												
+					},
+					max_fee: {
+						required: true,
+						min: 0,												
+					},
+					establishment: {
+						required: true,
+						minlength: 4,
+						maxlength: 4,
+						min: 1800						
+					},
+					recognition: {
+						required: true,
+						minlength: 4,
+						maxlength: 4,
+						min: 1800						
+					},
 					lowest_class: "required",
 					highest_class: "required",
 					recognized: "required",
@@ -123,6 +143,26 @@
 						required: 'Name is required',
 						minlength: 'Min allowed length for name is 2 chars',
 						maxlength: 'Max allowed length for name is 200 chars'					
+					},
+					min_fee: {
+						required: 'Minimum Monthly Fee is required',
+						min: 'Minimum Value is zero',												
+					},
+					max_fee: {
+						required: 'Maximum Monthly Fee is required',
+						min: 'Minimum Value is zero',												
+					},
+					establishment: {
+						required: 'Year of establishment is required',
+						minlength: 'Should be only 4 characters',
+						maxlength: 'Should be only 4 characters',
+						min: 'Year should be greater than 1800'						
+					},
+					recognition: {
+						required: 'Year of Recognition is required',
+						minlength: 'Should be only 4 characters',
+						maxlength: 'Should be only 4 characters',
+						min: 'Year should be greater than 1800'							
 					},
 					lowest_class: "Enter Lowest Class",
 					highest_class: "Enter Highest Class",

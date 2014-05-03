@@ -23,8 +23,8 @@ RECOGNIZED_CHOICES = (
     ('0', 'No'),
 )
 TYPE_CHOICES = (
-    ('Government Aided', 'Government Aided'),
-    ('Private', 'Private'),
+    ('Private aided by government', 'Private aided by government'),
+    ('Private Unaided', 'Private Unaided'),
     ('Government', 'Government'),
     ('Religious', 'Religious'),
     ('Special School', 'Special School'),
