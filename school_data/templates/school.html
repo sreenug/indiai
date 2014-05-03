@@ -62,10 +62,11 @@
 			 {% else %}
 			     <div class="form-group">
 			 {% endif %}
-				<label for="{{f.label}}" class="col-sm-2 control-label">{{f.label}}</label>
-				<div class="col-sm-10">
-					{{ f|placeholder:f.label }}
-				</div>
+					<label for="{{f.label}}" class="col-sm-2 control-label">{{f.label}}</label>
+					<div class="col-sm-10">
+						{{ f|placeholder:f.label }}
+					</div>
+				
 			</div>
 			{% endfor %}
 			<div class="form-group">
@@ -174,7 +175,21 @@
 					city: "Enter Street City",
 					state: "Enter State",
 					pincode: "Enter Pincode",
-				}
+				},
+				highlight: function(element, errorClass, validClass) {
+					$(element)
+						.parent('div')
+						.parent('div')
+						.addClass("has-error");
+
+				},
+				unhighlight: function(element, errorClass, validClass) {
+					$(element)
+						.parent('div')
+						.parent('div')
+						.removeClass("has-error");
+
+				},
 			});
 			
 			$("#id_medium_of_instruction").change(function() {
