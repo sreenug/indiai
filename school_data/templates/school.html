@@ -12,6 +12,7 @@
     <!-- Bootstrap core CSS -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.0/css/jquery.dataTables.css">
 
     <!-- Custom styles for this template -->
     <style type="text/css">
@@ -68,6 +69,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
           <ul class="nav navbar-nav">
             <li class="active"><a  title="$.scrollTo( '#school', 1800, {easing:'elasout'} );" href="#school" id="add-school" >Add School</a></li>
 			<li ><a title="$.scrollTo( '#map-canvas', 1800, {easing:'elasout'} );" href="#map-canvas" id="project" >Project</a></li>
+			<li ><a title="$.scrollTo( '#excel-table', 1800, {easing:'elasout'} );" href="#excel-table" >Browse</a></li>
           </ul>          
         </div><!--/.nav-collapse -->
       </div>
@@ -108,7 +110,21 @@ google.maps.event.addDomListener(window, 'load', initialize);
       </div>
 
     </div> <!-- /container -->
-<div id="map-canvas" style="width:100%; height:100%; float:left"></div>
+<div id="map-canvas" style="width:100%; height:100%;"></div>
+<div id="excel-table" style=" clear:both ; margin-top:50px;">
+
+    <table id="example" class="display" cellspacing="0">
+        <thead>
+            <tr>
+                <th>School Name</th>
+                <th>Address</th>
+                <th>Pincode</th>
+                <th>Type</th>
+            </tr>
+        </thead>
+    </table>
+  
+</div>
 
 
 </div><!-- container-->
@@ -117,6 +133,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 	<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
@@ -246,7 +263,9 @@ google.maps.event.addDomListener(window, 'load', initialize);
 				jQuery(this).parent('li').addClass('active');
 				jQuery("#add-school").parent('li').removeClass('active');
 			});
-			
+			$('#example').dataTable( {
+		        "ajax": "excel/"
+		    } );
 			
         });
 

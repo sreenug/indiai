@@ -5,6 +5,10 @@ from models import School, SchoolForm
 from school_data.settings import MEDIA_URL
 from django.http import HttpResponse
 import simplejson
+import json
+import csv
+
+from school_data.settings import PROJECT_PATH
 
 def response_mimetype(request):
     if "application/json" in request.META['HTTP_ACCEPT']:
@@ -32,3 +36,17 @@ class JSONResponse(HttpResponse):
     def __init__(self,obj='',json_opts={},mimetype="application/json",*args,**kwargs):
         content = simplejson.dumps(obj,**json_opts)
         super(JSONResponse,self).__init__(content,mimetype,*args,**kwargs)
+
+
+def excelFile(request):
+    array = []
+    filepath = PROJECT_PATH + '/static/Patna_School_GPS _tag_file.csv'
+    csvfile = open(filepath, 'rb')
+    file_data = csv.reader(csvfile)
+    print type(file_data)
+    for row in file_data:
+        array.append(row)
+    
+
+    data = json.dumps({"data" : array})
+    return HttpResponse(data)
