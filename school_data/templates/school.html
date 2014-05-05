@@ -15,11 +15,38 @@
 
     <!-- Custom styles for this template -->
     <style type="text/css">
-		body {
-		  min-height: 2000px;
-		  padding-top: 70px;
-		}
+		
+		html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+	  html, body, .container { height: 100% }
+
 	</style>
+	
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script>
+function initialize() {
+var center = new google.maps.LatLng(25.599859, 085.137111);
+  var mapOptions = {
+    zoom: 20,
+	center:center
+  };
+
+  var map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+
+  var kmlLayer = new google.maps.KmlLayer({
+    url: 'http:\/\/indiai.org\/data\/india_institute_patna_school_gis_map.kml',
+    map: map
+  });
+
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
 
   </head>
 
@@ -35,17 +62,20 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="http://www.indiai.org"><img style="width:150px;" src="http://indiai.org/wp-content/uploads/2014/04/indiai-logo-20140415.jpg"></a>
+          <a class="navbar-brand" href="http://www.indiai.org" target="_blank"><img style="width:150px;" src="http://indiai.org/wp-content/uploads/2014/04/indiai-logo-20140415.jpg"></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Add School</a></li>
+            <li class="active"><a  title="$.scrollTo( '#school', 1800, {easing:'elasout'} );" href="#school" id="add-school" >Add School</a></li>
+			<li ><a title="$.scrollTo( '#map-canvas', 1800, {easing:'elasout'} );" href="#map-canvas" id="project" >Project</a></li>
           </ul>          
         </div><!--/.nav-collapse -->
       </div>
     </div>
 
     <div class="container">
+	<div id="school" style="margin-top:40px;">
+	
       {% if form.errors %}
                         {% for error in form.non_field_errors %}
                             <p>{{error}}</p>
@@ -78,7 +108,10 @@
       </div>
 
     </div> <!-- /container -->
+<div id="map-canvas" style="width:100%; height:100%; float:left"></div>
 
+
+</div><!-- container-->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -87,10 +120,11 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 	<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="http://demos.flesler.com/jquery/scrollTo/js/jquery.scrollTo-min.js?1.4.11"></script>
 	<script type="text/javascript">
         $(document).ready ( function(){
             var lat, lng;
-
+			//$("#map-canvas").hide();
             navigator.geolocation.getCurrentPosition(function(position)
             { 
                 lat = position.coords.latitude;
@@ -201,7 +235,17 @@
 	            else{
 	                $("#language").hide();
 	            }
-	            }); 
+	            });
+			
+			
+			$("#add-school").click ( function() {
+				jQuery(this).parent('li').addClass('active');
+				jQuery("#project").parent('li').removeClass('active');
+			});
+			$("#project").click ( function() {
+				jQuery(this).parent('li').addClass('active');
+				jQuery("#add-school").parent('li').removeClass('active');
+			});
 			
 			
         });
