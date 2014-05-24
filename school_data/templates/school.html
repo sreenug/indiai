@@ -179,7 +179,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
 						min: 1800						
 					},
 					recognition: {
-						required: true,
 						minlength: 4,
 						maxlength: 4,
 						min: 1800						
@@ -193,7 +192,11 @@ google.maps.event.addDomListener(window, 'load', initialize);
 					street_address_2: "required",
 					city: "required",
 					state: "required",
-					pincode: "required",
+					pincode: {
+						required: true,
+						minlength: 6,
+						maxlength: 6					
+					}
 				},
 				messages: {
 					name: {
@@ -216,7 +219,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
 						min: 'Year should be greater than 1800'						
 					},
 					recognition: {
-						required: 'Year of Recognition is required',
 						minlength: 'Should be only 4 characters',
 						maxlength: 'Should be only 4 characters',
 						min: 'Year should be greater than 1800'							
@@ -230,7 +232,11 @@ google.maps.event.addDomListener(window, 'load', initialize);
 					street_address_2: "Enter Street Address Line 2",
 					city: "Enter Street City",
 					state: "Enter State",
-					pincode: "Enter Pincode",
+					recognition: {
+						required: 'Pincode is required',
+						minlength: 'Should be only 6 characters',
+						maxlength: 'Should be only 6 characters'						
+					}
 				},
 				highlight: function(element, errorClass, validClass) {
 					$(element)
