@@ -63,13 +63,14 @@ google.maps.event.addDomListener(window, 'load', initialize);
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="http://www.indiai.org" target="_blank"><img style="width:150px;" src="http://indiai.org/wp-content/uploads/2014/04/indiai-logo-20140415.jpg"></a>
+          <a class="navbar-brand" href="http://www.indiai.org" target="_blank">
+		  <img style="width:140px; margin-top:-15px;" src="https://s3-us-west-2.amazonaws.com/indiai/map+my+logo.png"></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a  title="$.scrollTo( '#school', 1800, {easing:'elasout'} );" href="#school" id="add-school" >Add School</a></li>
-			<li ><a title="$.scrollTo( '#map-canvas', 1800, {easing:'elasout'} );" href="#map-canvas" id="project" >Project</a></li>
-			<li ><a title="$.scrollTo( '#excel-table', 1800, {easing:'elasout'} );" href="#excel-table" >Browse</a></li>
+			<li ><a title="$.scrollTo( '#mapmyschool-desc', 1800, {easing:'elasout'} );" href="#mapmyschool-desc" id="project" >Project</a></li>
+			<li ><a title="$.scrollTo( '#excel-table', 1800, {easing:'elasout'} );" href="#excel-table" >School Directory</a></li>
           </ul>          
         </div><!--/.nav-collapse -->
       </div>
@@ -110,15 +111,46 @@ google.maps.event.addDomListener(window, 'load', initialize);
       </div>
 
     </div> <!-- /container -->
+<div id="mapmyschool-desc"><div style="height:20px;"></div><h3>Our Work</h3><p>Map My School is an ambitious campaign to map all schools in India. At least 13 lakh schools cater to 18.59 crore school going children in India. We spend, on an average, INR 45,969 crore each year to educate our children of which INR 25,000 crore goes to building new schools. Yet, there is no comprehensive data or map of all the schools. Therefore, Map My School is conceived as an important initiative by India Insitute, a not for profit research and advocacy organization based in New Delhi. When we mapped the schools in one city, we realized that there were many benefits to the initiative. Not only did the map provide the government with accurate data to help their planning but schools also received increased exposure to potential students free of cost. This map is also a very useful resource for parents who can now make a more informed school choice for their wards, thus benefiting all stakeholders.
+The Map My School campaign is a model based on crowd sourcing of information. We categorize different schools on the basis of terminal level, medium of instruction and affordability and, in stages, will cover almost all schools in India. The procedure for schools to participate in this innovative exercise is very simple.</p>
+<ul><li>Fill out a small form that does not require any sensitive information.</li>
+<li>The information asked for would be readily available with you and does not require any collation.</li>
+<li>Just ensure that you fill this form from a computer or mobile phone from within the school premises as the form automatically notes the GPS coordinates to display your school on our GPS map.</li></ul>
+<p>For a better understanding of the final outcome of this campaign, please find below a map of schools in Patna where we have already completed the process. This unique initiative requires your participation to succeed. We request you to kindly share the form with other schools as well. Thank you for your co-operation.</p></div>
 <div id="map-canvas" style="width:100%; height:100%;"></div>
 <div id="excel-table" style=" clear:both ; margin-top:50px;">
 
-    <table id="example" class="display" cellspacing="0">
+			
+	<table class="table" cellspacing="0" cellpadding="0" border="0" class="display" id="Table1" style="margin-bottom:20px;">
+    <tbody>
+		<tr><h4> Search Schools By </h4></tr>
+       <tr id="filter_global">
+           <td style="margin-left:2px;" align="center" id="schoolName"></td>
+		   <td style="margin-left:2px;" align="center" id="lowerclass"></td>
+		   <td style="margin-left:2px;" align="center" id="higherclass"></td>
+			<td style="margin-left:2px;" align="center" id="address"></td>
+           <td style="margin-left:2px;" align="center" id="pincode"></td>
+		   <td style="margin-left:2px;" align="center" id="medium"></td>
+           <td style="margin-left:2px;" align="center" id="recognition"></td>
+           <td style="margin-left:2px;" align="center" id="management"></td>
+           <td style="margin-left:2px;" align="center" id="cost"></td>
+       </tr>
+   </tbody>
+</table>
+			
+			<!--<p id="schoolName">Search Name</p>
+				<p id="address">Address</p>
+                <p id="pincode">Pincode</p>
+				<p id="recognition">Recognition Status</p>
+                <p id="management">Management Type</p>
+				<p id="cost">Cost of School</p>-->
+				
+	<table id="example" class="display" cellspacing="0">
         <thead>
             <tr>
                 <th>School Name</th>
-				<th>Lowest Class</th>
-				<th>Highest Class</th>
+				<th>Lower Class</th>
+				<th>Higher Class</th>
 				<th>Address</th>
                 <th>Pincode</th>
 				<th>Medium of Instruction</th>
@@ -127,6 +159,20 @@ google.maps.event.addDomListener(window, 'load', initialize);
 				<th>Cost of School</th>
             </tr>
         </thead>
+		
+		<!--<tfoot>
+            <tr>
+			<th>Search Name</th>
+				<th>Lowest Class</th>
+				<th>Highest Class</th>
+				<th>Search Address</th>
+                <th>Pincode</th>
+				<th>Medium of Instruction</th>
+				<th>Recognition Status</th>
+                <th>Management Type</th>
+				<th>Cost of School</th>
+		</tr>
+        </tfoot>-->
     </table>
   
 </div>
@@ -139,6 +185,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
+	<script src="http://jquery-datatables-column-filter.googlecode.com/svn/trunk/media/js/jquery.dataTables.columnFilter.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 	<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
@@ -276,7 +323,19 @@ google.maps.event.addDomListener(window, 'load', initialize);
 			});
 			$('#example').dataTable( {
 		        "ajax": "excel/"
-		    } );
+		    } ).columnFilter({sPlaceHolder: "head:before",
+			aoColumns:[
+				{ sSelector: "#schoolName"  },
+				{ sSelector: "#lowerclass"  },
+				{ sSelector: "#higherclass"  },
+				{ sSelector: "#address" },
+				{ sSelector: "#pincode" },
+				{ sSelector: "#medium"  },
+				{ sSelector: "#recognition", type:"select", values : ["recognised", "unrecognized"] },
+				{ sSelector: "#management" },
+				{ sSelector: "#cost" }
+				]
+			});	
 			
         });
 
