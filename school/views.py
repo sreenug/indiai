@@ -40,7 +40,7 @@ class JSONResponse(HttpResponse):
 
 def excelFile(request):
     array = []
-    filepath = PROJECT_PATH + '/static/Patna_School_GPS _tag_file.csv'
+    filepath = PROJECT_PATH + '/static/patna_school_list.csv'
     csvfile = open(filepath, 'rb')
     file_data = csv.reader(csvfile)
     print type(file_data)
