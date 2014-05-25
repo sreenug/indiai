@@ -127,6 +127,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'south',
     'school',
+    'college',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
