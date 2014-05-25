@@ -93,6 +93,7 @@ class College(models.Model):
                                    validators=[MaxValueValidator(90), MinValueValidator(-90)])
     longitude = models.DecimalField(max_digits=32, decimal_places=28, null=True, blank=True,
                                     validators=[MaxValueValidator(180), MinValueValidator(-180)])
+    image = models.ImageField("College Photo", upload_to='college', null=True, blank=True)
     email = models.EmailField()
     telephone = models.CharField(max_length=12)
     principal_name = models.CharField(max_length=40)

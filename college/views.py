@@ -25,7 +25,7 @@ class CreateCollegeView(CreateView):
         self.object = form.save()
         f = self.request.FILES.get('image')
         if f:
-            data = [{'name': f.name, 'url': MEDIA_URL + "school/" + f.name.replace(" ", "_")}]
+            data = [{'name': f.name, 'url': MEDIA_URL + "college/" + f.name.replace(" ", "_")}]
         response = JSONResponse("Thank You For Filling the Form", {}, response_mimetype(self.request))
         response['Content-Disposition'] = 'inline; filename=files.json'
         return response
