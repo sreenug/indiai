@@ -27,7 +27,7 @@ TYPE_CHOICES = (
     ('Private Unaided', 'Private Unaided'),
     ('Government', 'Government'),
     ('Religious', 'Religious'),
-    ('Special School', 'Special School'),
+    ('Special School', 'Special Needs School'),
 )
 LANGUAGE_CHOICES = (
     ('English','English'),
