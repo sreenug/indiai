@@ -104,7 +104,11 @@ google.maps.event.addDomListener(window, 'load', initialize);
 					<label for="{{f.label}}" class="col-sm-2 control-label">{{f.label}}</label>
 					<div class="col-sm-10">
 						{{ f|placeholder:f.label }}
+						{% if f.help_text %}
+                        <span class="help-block" style="margin-bottom:0px;">{{f.help_text}}</span>
+                        {% endif %}
 					</div>
+					
 				
 			</div>
 			{% endfor %}
